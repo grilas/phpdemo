@@ -24,6 +24,9 @@ function loadXMLDoc(url)
       通过把该参数设置为 "false"，可以省去额外的 onreadystatechange 代码。如果在请求失败时是否执行其余的代码无关紧要，那么可以使用这个参数。
     */
     xmlhttp.open("GET",url,true);
+    /*
+      null 不向后台向服务器发送数据
+    */
     xmlhttp.send(null);
   }
   else
@@ -46,6 +49,8 @@ function state_Change()
       document.getElementById('A2').innerHTML=xmlhttp.statusText;
       document.getElementById('A3').innerHTML=xmlhttp.responseText;
       var x = xmlhttp.responseXML.documentElement.getElementsByTagName("note");
+      //console.log(xmlhttp.responseXML.documentElement); 返回文档的根节点
+      //XML DOM  http://www.w3school.com.cn/xmldom/prop_document_documentelement.asp
       txt="<table border='1'>";
       for (i=0;i<x.length;i++)
       {
@@ -89,15 +94,15 @@ function state_Change()
 <body>
 <h2>Using the HttpRequest Object open true</h2>
 <p><a href="./xml_http_false.html">Using the HttpRequest Object open false</a></p>
-<p><b>Status:</b>
+<p><b>status:</b>
 <span id="A1"></span>
 </p>
 
-<p><b>Status text:</b>
+<p><b>statusText:</b>
 <span id="A2"></span>
 </p>
 
-<p><b>Response:</b>
+<p><b>responseText:</b>
 <br /><span id="A3"></span>
 </p>
 

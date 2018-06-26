@@ -1,0 +1,30 @@
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<script type="text/javascript">
+xmlHttp=null;
+if (window.XMLHttpRequest)
+{// code for IE7, Firefox, Opera, etc.
+  xmlHttp=new XMLHttpRequest();
+}
+else if (window.ActiveXObject)
+{// code for IE6, IE5
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+if (xmlHttp!=null)
+{
+  xmlHttp.open("GET", "1.xml", false);
+  xmlHttp.send(null);
+  xmlDoc=xmlHttp.responseText;
+  console.log(xmlDoc);
+  xmlHttp.open("POST", "xml_http_post.php", false);
+  xmlHttp.send(xmlDoc);
+  document.write(xmlHttp.responseText);
+}
+else
+{
+  alert("Your browser does not support XMLHTTP.");
+}
+</script>
+</body>
+</html>
