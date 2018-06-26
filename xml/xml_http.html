@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Using the HttpRequest Object open true</title>
+<script type="text/javascript">
+var xmlhttp;
+function loadXMLDoc(url)
+{
+  xmlhttp=null;
+  if (window.XMLHttpRequest)
+  {// code for IE7, Firefox, Opera, etc.
+    xmlhttp=new XMLHttpRequest();
+  }
+  else if (window.ActiveXObject)
+  {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  if (xmlhttp!=null)
+  {
+    xmlhttp.onreadystatechange=state_Change;
+    /*
+      我们的实例在 open() 的第三个参数中使用了 "true"。;该参数规定请求是否异步处理。
+      True 表示脚本会在 send() 方法之后继续执行，而不等待来自服务器的响应.
+      通过把该参数设置为 "false"，可以省去额外的 onreadystatechange 代码。如果在请求失败时是否执行其余的代码无关紧要，那么可以使用这个参数。
+    */
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send(null);
+  }
+  else
+  {
+    alert("Your browser does not support XMLHTTP.");
+  }
+}
+
+function state_Change()
+{
+  /*
+  注释： onreadystatechange 是一个事件句柄。它的值 (state_Change) 是一个函数的名称，当 XMLHttpRequest 对象的状态发生改变时，会触发此函数。状态从 0 (uninitialized) 到 4 (complete) 进行变化。仅在状态为 4 时，我们才执行代码。
+  */
+  if (xmlhttp.readyState==4)
+  {// 4 = "loaded"
+    if (xmlhttp.status==200)
+    {// 200 = "OK"
+      //从这是处理xml数据，动态显示
+      document.getElementById('A1').innerHTML=xmlhttp.status;
+      document.getElementById('A2').innerHTML=xmlhttp.statusText;
+      document.getElementById('A3').innerHTML=xmlhttp.responseText;
+    }
+    else
+    {
+      alert("Problem retrieving XML data:" + xmlhttp.statusText);
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+<h2>Using the HttpRequest Object open true</h2>
+<p><a href="./xml_http_false.html">Using the HttpRequest Object open false</a></p>
+<p><b>Status:</b>
+<span id="A1"></span>
+</p>
+
+<p><b>Status text:</b>
+<span id="A2"></span>
+</p>
+
+<p><b>Response:</b>
+<br /><span id="A3"></span>
+</p>
+
+<button onclick="loadXMLDoc('1.xml')">Get XML</button>
+
+</body>
+</html>

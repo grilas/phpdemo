@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<a href="" id="a1" target="new">新窗口</a>
+<div id="msg"></div>
+<form action="a.php" meathod="post" name="login" id="f1">
+    用户名：<input type="text" name="username"/><br>
+    text:<input id="txt" type="text" value="baidu"/><br>
+    <input type="button" id="btn" value="提交"/>
+</form>
+<script type="text/javascript">
+	var txt = document.getElementById('txt');
+	txt.onmouseover = function(){
+		this.select();
+	}
+
+	var a1 = document.getElementById('a1');
+    a1.onclick = function () {
+        window.open('new.html','new','location=no,toolbar=no');
+        return false;
+    }
+
+	document.getElementById("btn").onclick=function(){
+
+			if(document.forms['login'].username.value ==''){
+				alert("用户能不能为空"); return false;
+			}
+			document.forms['login'].submit();
+			
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+letter{width: 100%;background-color: #fff}
+note{margin-bottom: 20pt;margin-left: 0;display: block;border: 1px solid black;} 
+to{color: blue;font-size: 20pt;}
+from,heading,body{display: block;color: #000000;margin-left: 20pt;}
