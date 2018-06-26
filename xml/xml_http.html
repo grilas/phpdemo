@@ -45,6 +45,37 @@ function state_Change()
       document.getElementById('A1').innerHTML=xmlhttp.status;
       document.getElementById('A2').innerHTML=xmlhttp.statusText;
       document.getElementById('A3').innerHTML=xmlhttp.responseText;
+      var x = xmlhttp.responseXML.documentElement.getElementsByTagName("note");
+      txt="<table border='1'>";
+      for (i=0;i<x.length;i++)
+      {
+          txt=txt + "<tr>";
+          xx=x[i].getElementsByTagName("to");
+          {
+            try
+            {
+              txt=txt + "<td>" + xx[0].firstChild.nodeValue + "</td>";
+            }
+            catch (er)
+            {
+              txt=txt + "<td> </td>";
+            }
+          }
+          xx=x[i].getElementsByTagName("from");
+          {
+            try
+            {
+            txt=txt + "<td>" + xx[0].firstChild.nodeValue + "</td>";
+            }
+            catch (er)
+            {
+            txt=txt + "<td> </td>";
+            }
+          }
+          txt=txt + "</tr>";
+      }
+      txt=txt + "</table>";
+      document.getElementById('A4').innerHTML=txt;
     }
     else
     {
@@ -70,6 +101,10 @@ function state_Change()
 <br /><span id="A3"></span>
 </p>
 
+<p><b>table data:</b>
+<br /><div id="A4"></div>
+</p>
+<!-- 也可以用xmlhttp 获取txt文件 -->
 <button onclick="loadXMLDoc('1.xml')">Get XML</button>
 
 </body>
