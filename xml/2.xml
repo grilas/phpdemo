@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root> 
+	<user> 
+		<userName>中文</userName> 
+		<email>male</email> 
+		<age>27</age> 
+		<tel>1234678</tel> 
+	</user>
+</root>

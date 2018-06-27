@@ -28,6 +28,7 @@ else // Internet Explorer
 {
 	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
 	xmlDoc.async="false";
+	//注释：loadXML() 方法用于加载字符串（文本），而 load() 用于加载文件。
 	xmlDoc.loadXML(txt);
 }
 

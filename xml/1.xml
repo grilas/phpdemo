@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 声明xml的版本和编码 一定要放在最顶部-->
-<!-- 下面这一行检查,xml有没有语法错误 -->
-<!DOCTYPE note SYSTEM "Note.dtd">
-<!-- 引入css样式表格 -->
-<!-- <?xml-stylesheet type="text/css" href="1.css"?> -->
 <letter>
 	<note>
 		<to>发送给guo</to>
 		<from>来自大牛</from>
 		<heading>标题1</heading>
-		<body>内容11111</body>
+		<content>内容11111</content>
 	</note>
-	<note>
+	<note1>
 		<to>发送给guo2</to>
 		<from>来自大牛2</from>
 		<heading>标题2</heading>
-		<body>内容222222</body>
-	</note>
-	<note>
+		<content>内容222222</content>
+	</note1>
+	<note1>
 		<to>发送给guo3</to>
 		<from>来自大牛3</from>
 		<heading>标题3</heading>
-		<body>内容3333</body>
-	</note>
+		<content>33333333</content>
+	</note1>
+	<note3>
+		<to>发送给guo4</to>
+		<from>来自大牛4</from>
+		<heading>标题4</heading>
+		<content><oo><to>wewewe</to><from>ooo</from></oo></content>
+	</note3>
 </letter>
