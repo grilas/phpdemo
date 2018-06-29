@@ -1,0 +1,15 @@
+20180628 目前要学习的东西
+
+
+服务器方面
+docker
+
+
+前端方面 
+node.js
+vue.js
+
+git clone
+fatal: unable to access 'http://xxxx.git':
+ error setting certificate verify locations:
+ 
