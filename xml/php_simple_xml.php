@@ -17,13 +17,13 @@ foreach($xml->children() as $key=> $child)
     echo "====content:".($child->content)."<br>";
 }*/
 
-echo "<hr>";
+echo "xml转成数组<hr>";
 $data = xmlToArray("1.xml");
 echo "<pre>";
 print_r($data);
 
 
-echo "<hr>";
+echo "数组转成xml<hr>";
 $xml_str = arrayToXml($data,null,null,"letter");
 
 echo $xml_str;

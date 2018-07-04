@@ -1,5 +1,10 @@
 <?php
 
+/*
+   https://pan.baidu.com/s/1dnSFbhCsjbtPhXQuCTQWIA
+*/
+
+//
 echo "<hr>";
 $str = "不乱于心，不困于情。不畏将来，不念过往。如此，安好。";
 echo mb_substr($str, 2, 4, 'utf-8');
@@ -7,6 +12,7 @@ echo mb_substr($str, 2, 4, 'utf-8');
 echo "<hr>";
 
 
+//用php实现一个双向队列
 
 
 /**

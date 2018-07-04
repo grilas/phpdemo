@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<div style="width: 100%;margin:0 auto;text-align: center">
+    <p style="width: 100%;height: 30px;">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+        &nbsp; &nbsp;
+        <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    </p>
+    
+
+    <canvas id="the-canvas" style="border:1px solid #c3c3c3;"></canvas>
+</div>
+
+<script src="../build/pdf.js"></script>
+<!-- <script src="../build/pdf.worker.js"></script> -->
+<script>
+
+    var pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null;
+
+    var canvas = document.getElementById('the-canvas');
+
+    var DEFAULT_URL = './compressed.tracemonkey-pldi-09.pdf';
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc ='../build/pdf.worker.js';    
+    var CMAP_URL = './cmaps/';
+    var CMAP_PACKED = true;
+    var PAGE_TO_VIEW = 1;
+    var SCALE = 2;
+    /**
+     * Asynchronously downloads PDF.
+     */
+    pdfjsLib.getDocument({url: DEFAULT_URL,cMapUrl: CMAP_URL,cMapPacked: CMAP_PACKED}).then(function(pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+        // Initial/first page rendering
+        renderPage(pageNum);
+    });
+    /**
+     * Get page info from document, resize canvas accordingly, and render page.
+     * @param num Page number.
+     */
+    function renderPage(num) {
+        pageRendering = true;
+        // Using promise to fetch the page
+        pdfDoc.getPage(num).then(function(page) {
+            var viewport = page.getViewport(SCALE);
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var context = canvas.getContext('2d');
+            // Render PDF page into canvas context
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+            var renderTask = page.render(renderContext);
+
+            // Wait for rendering to finish
+            renderTask.promise.then(function() {
+                pageRendering = false;
+                if (pageNumPending !== null) {
+                    // New page rendering is pending
+                    renderPage(pageNumPending);
+                    pageNumPending = null;
+                }
+            });
+        });
+
+        // Update page counters
+        document.getElementById('page_num').textContent = num;
+    }
+
+    /**
+     * If another page rendering in progress, waits until the rendering is
+     * finised. Otherwise, executes rendering immediately.
+     */
+    function queueRenderPage(num) {
+        if (pageRendering) {
+            pageNumPending = num;
+        } else {
+            renderPage(num);
+        }
+    }
+
+    /**
+     * Displays previous page.
+     */
+    function onPrevPage() {
+        if (pageNum <= 1) {
+            return;
+        }
+        pageNum--;
+        queueRenderPage(pageNum);
+    }
+    document.getElementById('prev').addEventListener('click', onPrevPage);
+
+    /**
+     * Displays next page.
+     */
+    function onNextPage() {
+        if (pageNum >= pdfDoc.numPages) {
+            return;
+        }
+        pageNum++;
+        queueRenderPage(pageNum);
+    }
+    document.getElementById('next').addEventListener('click', onNextPage);
+
+
+</script>
+</body>
+</html>
