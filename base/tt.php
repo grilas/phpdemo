@@ -10,3 +10,31 @@ echo "$a".'$a'."\\\$a"."${a}"."$a".'${a}'."$a"+"$a";
 
 //=============================
 
+/*$con = mysql_connect("localhost","test","111111");
+if (!$con)
+{
+	die('Could not connect: ' . mysql_error());
+}
+mysql_select_db("test", $con);
+$result = mysql_query("SELECT * FROM user where name='张三'");
+while($row = mysql_fetch_array($result))
+{
+	print_r($row['content']);
+}
+mysql_close($con);*/
+
+
+class test{
+	function Get_test($num){
+		$num = md5(md5($num)."En");
+		return $num;
+	}
+}
+
+//用于密码之类的加密
+//使用方法如下，Get_test 前要加上 function
+$object = new test();
+$data = $object->Get_test(21223);
+
+
+?>
