@@ -4,12 +4,88 @@
    https://pan.baidu.com/s/1dnSFbhCsjbtPhXQuCTQWIA
 */
 
+//$jsonStr = '{"key":"value","key1":"value1"}';
+/*$jsonStr = '{"name":"2018-08-06","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}';
+$json2Array = json_decode($jsonStr,true);
+var_dump($json2Array);die;*/
+
+
+
+$arr = array('{"name":"2018-08-06","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}' ,'{"name":"2018-08-07","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}');
+
+
+foreach ($arr as $key => $value) {
+    $ar = json_decode($value,true);
+    var_dump($ar);
+}
+
+
+
+$content = "哪些网游是我们在游艺春秋的网站中可以找到？";
+$keyword = array("网站","游艺春秋","网游");
+
+
+$find_num = array();
+foreach ($keyword as $key => $value) {
+    $find_num[$key]=strpos($content,$value); 
+}
+
+//var_dump($find_num);
+
+
+function find_keyword($content,$keyword){
+
+}
+
+
+
+/*$x = 5;
+echo $x;
+echo "<br>";
+
+echo $x+++$x++;
+echo "<br>";
+
+echo $x;
+echo "<br>";
+
+echo $x---$x--;
+echo "<br>";
+
+echo $x;*/
+
+/*$x = 3+"15%"+"$25";
+echo $x;*/
+
+/*
+function getDays($date){
+    //获取天数
+$days=date("t",strtotime($date));return $days;
+}
+     
+//2015 年12 月
+$date="2015-12";
+echo getDays($date);
+//输出结果：31天*/
+
+
+
+/*$aa = strtotime("2018-06-12");
+echo ucfirst(date("M",$aa));
+echo "<br>";
+
+$time = date("Y-m-d");
+echo $time."<br>";
+echo "月".date('M');*/
+
+
+
 //
-echo "<hr>";
+/*echo "<hr>";
 $str = "不乱于心，不困于情。不畏将来，不念过往。如此，安好。";
 echo mb_substr($str, 2, 4, 'utf-8');
 
-echo "<hr>";
+echo "<hr>";*/
 
 
 //用php实现一个双向队列

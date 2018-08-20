@@ -31,17 +31,17 @@ $file = fopen("http://www.example.com/","r");
 $file = fopen("ftp://user:password@example.com/test.txt","w");
 
 */
-
+header("content-type:text/html;charset=utf-8");
 $current_dir = dirname(__FILE__);
 $current_dir = str_replace('\\',"/",$current_dir);
 
-require "./common/func.php";
+require "../common/func.php";
 $data_dir = $current_dir."/data/fopen";
 
 $dir_res = mk_dirs($data_dir);
 if(!$dir_res){ die("目录创建失败");}
 
-$a_url = DEMOURL."/demo/data/fopen";
+$a_url = DEMOURL."/data/fopen";
 /*
 **** 常用fopen，打开文件并写入
 ****
@@ -69,9 +69,5 @@ if (flock($fp,LOCK_EX)) {
 }
 fclose($fp);
 echo "<a href='".$a_url."/lock.txt' target='_blank'>lock.txt创建成功</a><hr><br>";
-
-/*
-案例二： 简单的
-*/
 
 ?>

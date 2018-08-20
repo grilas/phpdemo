@@ -13,7 +13,7 @@ $data = array(
 );
 
 
-$filename = "array_write_file_1.php";
+$filename = "../data/array_write_file_1.php";
 file_exists($filename) or touch($filename);
 
 $res = array_wirte_file($filename,$data);

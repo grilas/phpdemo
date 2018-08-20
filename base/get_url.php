@@ -1,7 +1,7 @@
 <?php 
 
 
-#测试网址:   http://g.git.com/base/get_url.php?id=6
+#测试网址:   http://g.git.com/base/get_url.php?id=6&sdf=5
 
 //获取域名或主机地址 
 echo '$_SERVER["HTTP_HOST"]: ========>'.$_SERVER["HTTP_HOST"]; 
@@ -10,24 +10,30 @@ echo "<br><br>";
 
 echo '$_SERVER["SERVER_NAME"]: ========>'.$_SERVER["SERVER_NAME"]; 
 echo "<br><br>";
+// g.git.com
 
+//正在浏览当前页面用户的 IP 地址:127.0.0.1
+echo '$_SERVER["REMOTE_ADDR"]: ========>'.$_SERVER["REMOTE_ADDR"]; 
+echo "<br><br>";
+// g.git.com
 
 echo '$_SERVER["SERVER_PORT"]: ========>'.$_SERVER["SERVER_PORT"]; 
 echo "<br><br>";
+// 80
 
 //获取网页地址 
 echo '$_SERVER["PHP_SELF"]: ========>'.$_SERVER["PHP_SELF"];
 echo "<br><br>";
-#/blog/testurl.php
+//  /base/get_url.php
 
 //获取网址参数 
 echo '$_SERVER["QUERY_STRING"]: ========>'.$_SERVER["QUERY_STRING"];
 echo "<br><br>";
-#id=5
+//  id=6&sdf=5
 
 echo '$_SERVER["REQUEST_URI"]: ========>'.$_SERVER["REQUEST_URI"];
 echo "<br><br>";
-
+//  /base/get_url.php?id=6&sdf=5
 
 //获取用户代理,当前页面的前一页面的地址
 if(isset($_SERVER["HTTP_REFERER"])){
