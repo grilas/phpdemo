@@ -10,6 +10,18 @@ $json2Array = json_decode($jsonStr,true);
 var_dump($json2Array);die;*/
 
 
+$aaa = 001.988889900000;
+
+//去掉多余的0
+$bbb = floatval($aaa);
+
+//保留2位小数，不四舍五入
+echo $total = floor($bbb*100)/100;
+
+
+
+//echo sprintf("%.2f",substr(sprintf("%.3f", $bbb), 0, -2)); 
+die;
 
 $arr = array('{"name":"2018-08-06","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}' ,'{"name":"2018-08-07","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}');
 
