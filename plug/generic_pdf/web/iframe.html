@@ -3,26 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="./jquery-1.11.2.min.js"></script>
 </head>
 
 <!-- //为了方便区别，对应设置了样式 -->
 <style>
     .iframe_page{
-        width: 400px;
-        height: 260px;
+        width: 1200px;
+        height: 500px;
         background-color: #dfdfdf;  /* 为了方便区别，设置背景样式 */
+        margin:0 auto;
     }
     .iframe_page #framePage{
-        width: 300px;
-        height: 200px;
+        width: 1000px;
+        height: 450px;
         background-color: #adb9cd; /* 为了方便区别，设置背景样式 */
     }
 </style>
 
 <body>
-    <!-- 嵌入 iframe 模块 -->
-    <div class="iframe_page">
-        <iframe id="framePage" src="inner_page.html"></iframe>
+    <div class="iframe_page" style="height: 50px;">
+    <button id="on_click">点击加载pdf</button>
+    <button id="click_hide">点击隐藏</button>
     </div>
+    <div class="iframe_page" style="height: 30px;" id="me">
+        我在这里这里
+    </div>
+    <!-- 嵌入 iframe 模块 -->
+    <div class="iframe_page" style="display: none;" id="pdf">
+        <iframe id="framePage" src=""></iframe>
+    </div>
+    <script type="text/javascript">
+       var pdf_file = "test.pdf";
+       $(function(){
+            $("#on_click").click(function(){
+                var src_url = $("#framePage").attr("src");
+                if(src_url ==''){
+                    $("#framePage").attr("src","viewer2.html");
+                }
+                $("#me").hide();
+                $("#pdf").show();
+            })
+            $("#click_hide").click(function(){
+                $("#pdf").hide();
+                $("#me").show();
+            })
+       })
+    </script>
 </body>
 </html>

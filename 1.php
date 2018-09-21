@@ -8,7 +8,7 @@
 /*$jsonStr = '{"name":"2018-08-06","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}';
 $json2Array = json_decode($jsonStr,true);
 var_dump($json2Array);die;*/
-
+phpinfo();
 
 $aaa = 001.988889900000;
 

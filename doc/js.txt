@@ -1,0 +1,36 @@
+ui
+
+(注！jquery-2.0以上版本不再支持IE 6/7/8) 并不是最新的版本就最好的，而是根据您项目需求所适合的版本！
+
+
+
+这个网站写的挺好
+https://blog.websoftware.cn/
+
+layui 
+https://www.layui.com
+
+
+Amaze ~ 妹子 UI
+中国首个开源 HTML5 跨屏前端框架
+http://amazeui.org/
+
+
+https://www.cnblogs.com/kingboy2008/p/5261771.html
+
+H-ui 前端框架
+http://www.h-ui.net/
+
+
+AUI 移动端
+http://www.auicss.com/
+
+
+FrozenUI 是一套基于移动端的UI库
+轻量、精美、遵从手机 QQ 设计规范
+http://frozenui.github.io/
+
+
+vue.js
+是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+

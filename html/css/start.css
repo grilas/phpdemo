@@ -1,0 +1,46 @@
+.layui-side{overflow-x:visible;}
+/* .layui-nav-tree .layui-nav-item{padding-left: 8px;} */
+.layui-side .layui-side-scroll{overflow-x:visible;}
+.layui-layout-admin .layui-side{overflow-x:visible;z-index: 1001;top:0;}
+.layui-layout-admin .layui-logo {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1002;
+    height: 62px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-weight: 300;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-bottom: 2px solid #827a7a;
+}
+.layui-layout-admin .layui-logo img{width: 140px;height: 40px;margin-right: 12px;}
+.layui-nav-tree .layui-nav-item a{white-space:normal;}
+.layui-nav-tree .layui-icon{font-size: 16px;}
+.layui-nav-tree .layui-nav-item >a{padding: 0 0 0 8px;}
+.layui-nav-tree i{padding-right: 15px;}
+.layui-nav-tree .layui-nav-child a{padding-left: 38px;}
+.layui-side.mini_nav{width: 35px;}
+.mini_nav .layui-side-scroll{width: 35px;}
+.mini_nav .layui-nav-tree{width: 35px;}
+.mini_nav .layui-logo{width: 35px;padding: 0 5px;}
+.mini_nav .layui-nav .layui-nav-item a{padding: 0px}
+.mini_nav .layui-nav-tree .layui-nav-more{display: none;}
+.mini_nav .layui-nav-tree i {padding: 0;margin-left: 8px;} 
+.mini_nav .layui-logo img{display: none;}
+/* .mini_nav .layui-nav-itemed {
+	position:absolute;
+	top:0;
+	left:35px;
+	width:180px;
+	z-index:1000;
+	background:#333;
+	overflow:hidden;
+} 
+
+.mini_nav .layui-nav-child dd{padding-left: 28px;}
+.mini_nav .layui-nav-child dd:hover{background: #393D49}
+.mini_nav .layui-nav-tree .layui-nav-item >a i{display: none;} */
+ 
