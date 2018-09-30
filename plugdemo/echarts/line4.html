@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts 20180824下载</title>
+    <!-- 引入 echarts.js -->
+    <!-- 这个是在官网上下载的精简版只含 折 柱 饼 http://echarts.baidu.com/download.html -->
+    <!-- 文档地址 http://echarts.baidu.com/tutorial.html -->
+    <script src="./echarts.simple.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['浓度','流量','压力']
+            },
+            xAxis: {
+                axisLabel:{'interval':0,rotate:50}, 
+                data: ["09:10","09:20","09:30","09:40","09:50","10:00"]
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '浓度',
+                    type: 'line',
+                    data: [82,83, 88, 88.5, 89.4, 90]
+                },
+                {
+                    name: '流量',
+                    type: 'line',
+                    data: [13,12.3, 13.5, 14, 14.5, 15]
+                },
+                {
+                    name: '压力',
+                    type: 'line',
+                    data: [0.1,0.12, 0.13, 0.3, 0.4,0.3]
+                },
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
