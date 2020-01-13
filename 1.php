@@ -8,9 +8,39 @@
 /*$jsonStr = '{"name":"2018-08-06","image":"http://www.youcaiwx.com/Public/Uploads/newtopicpics/2018-08-13/5b7140f00d5d9.jpg"}';
 $json2Array = json_decode($jsonStr,true);
 var_dump($json2Array);die;*/
-phpinfo();
 
-$aaa = 001.988889900000;
+/*$str = [
+"policy":["expire_time":""],
+"description":"aaa",
+"production_mode":false,
+"appkey":"5d521d4e3fc195b523000353",
+"payload":[
+    "body":[
+        "title":"aaaaa",
+        "ticker":"aaaaa",
+        "text":"aaaa",
+        "after_open":"go_app",
+        "play_vibrate":"true",
+        "play_lights":"true",
+        "play_sound":"true"
+        ],
+    "display_type":"notification",
+    "extra":["type":"orderMessage","title":"推送成功","value":"2019081621663350077142"]
+    ],
+"device_tokens":"Ai5HK7RiJrrAZxaB8OaPX7PrcyURwKRSmcPEYrK3qf9C",
+"type":"unicast",
+"timestamp":'1566186202'];*/
+
+       
+       //$arr = ["sdf"=>["sdf"=>12]];
+$aaa2 = '{"policy":{"expire_time":""},"description":"aaa","production_mode":false,"appkey":"5d521d4e3fc195b523000353","payload":{"body":{"title":"aaaaa","ticker":"aaaaa","text":"aaaa","after_open":"go_app","play_vibrate":"false","play_lights":"false","play_sound":"true"},"display_type":"notification","extra":{"type":"orderMessage","title":"推送成功","value":"2019081621663350077142"}},"device_tokens":"Ai5HK7RiJrrAZxaB8OaPX7PrcyURwKRSmcPEYrK3qf9C","type":"unicast","timestamp":1566186202}';
+
+echo "<pre>";
+$arr = json_decode($aaa2,true);
+ var_dump($arr);
+//phpinfo();
+
+/*$aaa = 001.988889900000;
 
 //去掉多余的0
 $bbb = floatval($aaa);
@@ -47,7 +77,7 @@ foreach ($keyword as $key => $value) {
 
 function find_keyword($content,$keyword){
 
-}
+}*/
 
 
 
@@ -134,13 +164,13 @@ echo "<hr>";*/
     
 */
 
-function substr_utf8($str,$start,$length = null)
+/*function substr_utf8($str,$start,$length = null)
 {
     $sep = "";
     $arr = array_slice(preg_split("//u", $str,-1,PREG_SPLIT_NO_EMPTY), $start,$length);
     return join($sep,$arr);
 }
-
+*/
 
 
 

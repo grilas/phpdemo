@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算属性computed</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="example">
+			<p>Original message: "{{ message }}"</p>
+			<p>Computed reversed message: "{{ reversedMessage }}"</p>
+			
+			<p>计算属性vs侦查属性  f:{{ firstnum }}==== l:{{ lastnum }}</p>
+			<p>侦查属性： {{ zong }}</p>
+			<p>计算属性2： {{ zong2 }}</p>
+			
+			
+			<p>算属性的 setter;计算机默认只有getter,需要时也可以提供setter</p>
+			<p>计算属性3： {{ zong3 }}</p>
+		</div>
+		<!-- 计算属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。注意，如果某个依赖 (比如非响应式属性) 在该实例范畴之外，则计算属性是不会被更新的。 组件中使用 methods 方法没有缓存-->
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#example',
+				data:{
+					message:'abcdefg',
+					firstnum:1,
+					lastnum:3,
+					zong:4,
+				},
+				//侦查属性  下面代码是命令式且重复的
+				watch:{
+					firstnum:function(val){
+						this.zong = val+this.lastnum;
+					},
+					lastnum:function(val){
+						this.zong = val+this.firstnum;
+					}
+				},
+				computed:{
+					//计算属性 声明的计算属性函数,将成为属性调用
+					reversedMessage:function(){
+						// `this` 指向 vm 实例
+						return this.message.split('').reverse().join('');
+					},
+					//计算机属性,使用计算机属性比侦查属性简洁多了是吧..
+					zong2:function(){
+						return this.firstnum + this.lastnum;
+					},
+					
+					//计算机属性3;当运行vm.firstnum 或者 vm.lastnum; set会被调用
+					zong3:{
+						get:function(){
+							return this.firstnum+this.lastnum;
+						},
+						set:function(newval){
+							this.firstnum = this.firstnum+newval;
+						}
+					}
+				}
+			})
+			
+			console.log("函数成为属性可以调用"+vm.reversedMessage);
+			
+			//隐藏掉这段,会看到,zong=4; 之所以变成5是因为口算计属性3
+			vm.firstnum = 2;
+			
+		</script>
+	</body>
+</html>

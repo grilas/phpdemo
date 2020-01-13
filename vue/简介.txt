@@ -1,0 +1,38 @@
+vue版本 2019-11-13
+
+https://cn.vuejs.org/v2/guide/installation.html
+下载的开发版(包含完整的警告和调试模式)
+
+Vue.js v2.6.10
+
+
+el ~~~ element 元素、节点
+data 
+methods
+
+
+1、第一个应用
+2、声明渲染；v-bind;动态绑定特性
+3、条件与循环-条件;v-if;
+4、条件与循环-循环;v-for;{todo in lists}
+5、处理用户输入-事件监听;v-on;methods
+6、处理用户输入-表单输入与应用状态双向绑定;v-model;
+7、组件化应用构建
+
+
+数据与方法 Data and Methods
+生命周期   Lifecycle Hooks
+模板语法-差值 Template Syntax-Interpolation
+模板语法-指令 Template Syntax-Directives
+
+计算属性 computed properties
+计算属性-侦听器 computed properties2
+
+class与style绑定  Class and Style Bindings
+条件渲染  Conditional Rendering
+列表渲染  List Redering
+事件处理  Event Handling
+
+表单输入绑定  Form Input Bindings
+
+3点半

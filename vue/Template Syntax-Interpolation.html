@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模板语法-差值；数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值：</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>msg:{{ msg }}</p>
+			
+			<!-- 执行一次性地插值，当数据改变时，插值处的内容不会更新 -->
+			<p v-once>{{ msg }}</p>
+			
+			<!-- 双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用 v-html 指令： -->
+			<!-- 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。请只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。 -->
+			<p v-bind:class='color'>{{ rawHtml }}</p>
+			<p v-html="rawHtml" v-bind:class='color'>{{ rawHtml }}</p>
+			
+			<!-- Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令： -->
+			<p v-bind:id="pid">用户名：mojxuan</p>
+			
+			<!-- 对于布尔特性 (它们只要存在就意味着值为 true)，v-bind 工作起来略有不同，在这个例子中： -->
+			<button v-bind:disabled="isButtonDisabled">Button</button>
+			
+			<!-- #javascript 表达式 -->
+			<p>{{ number }}+1={{ number + 1 }}</p>
+			<p>三元运算：{{ ok ? 'YES':'NO'}}</p>
+			<p>{{ message }}字符串翻转{{ message.split('').reverse().join('') }}</p>
+			<div v-bind:id="'list-' + id">给id动态赋值</div>
+			
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					msg:'我还是原来的样子',
+					rawHtml:"<span>你好呀</span>",
+					color:'blue',
+					pid:'user',
+					isButtonDisabled:true,
+					number:7,
+					ok:true,
+					message:'Oh!',
+					id:8,
+				},
+				
+			});
+			vm.msg = "模板语法差值-template syntax interpolation";
+		</script>
+		
+		<style>
+			.blue{color: #0000FF;font-weight: bold;}
+		</style>
+	</body>
+</html>

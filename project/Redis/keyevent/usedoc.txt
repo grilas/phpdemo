@@ -1,0 +1,34 @@
+PHP对Redis键空间通知过期事件的应用实例
+https://blog.csdn.net/kunpeng1987/article/details/79624915
+
+利用redis实现定时任务,完全不需要crontab
+https://www.jianshu.com/p/e72da19f1774
+
+修改redis.conf
+将 notify-keyspace-events  "Ex"
+
+重启redis
+
+
+2、在服务器端。用php命令访问。psubscribe.php
+
+2、在浏览器访问reids.php
+
+然后查看服务端查看psubscribe 执行情况
+
+
+9578:M 05 Jul 11:22:50.621 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+echo 511 /proc/sys/net/core/somaxconn
+
+9578:M 05 Jul 11:22:50.621 # Server initialized
+9578:M 05 Jul 11:22:50.621 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+9578:M 05 Jul 11:22:50.621 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+
+
+ # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+vim /etc/sysctl.conf ，改vm.overcommit_memory=1，然后sysctl -p 使配置文件生效
+vim /etc/sysctl.conf net.core.somaxconn= 600 然后执行sysctl -p 就可以永久消除这个warning
+
+9660:M 05 Jul 11:29:28.541 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+9660:M 05 Jul 11:29:28.541 # Server initialized
+9660:M 05 Jul 11:29:28.541 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.

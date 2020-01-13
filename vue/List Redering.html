@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>列表渲染</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p></p>
+			<ul id="example-1">
+			  <li v-for="item,index in items" :key="index">
+			    {{ index }} -><a v-html="item.message">{{ item.message }}</a>
+			  </li>
+			</ul>
+			<hr>
+			
+			<ul>
+				<li v-for="(val,name,index) in objects" :key="index">
+					{{index }}->{{ name }}：<a v-html="val">{{ val }}</a>
+				</li>
+			</ul>
+			<hr />
+			<ul>
+				<li><a class="red">数组更新检测:</a></li>
+				<li class="red">数组变异方法</li>
+				<li>push();pop();shift();unshift();splice();sort();reverse();</li>
+				<li>在控制台,数组尝试调用变异方法。比如vm.items.push({ message: 'Baz' })。</li>
+				<li>https://cn.vuejs.org/v2/guide/list.html</li>
+				<hr />
+				<li v-for="n in evennumbers">过滤--{{n}}</li>
+				<li v-for="n in even(numbers)">-》过滤{{ n }}</li>
+				<li> <span v-for="n in 10">{{ n }} </span></li>
+			</ul>
+
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					setme:'随意设置的一个变量值',
+					numbers:[1,2,3,4,5],
+					items:[
+						{message:'<a class="red">渲染数组;index->当前索引</a>该怎么形容你最贴切'},
+						{message:'<a class="red">items->元数据数组</a>|拿什么跟你作比较才算特别'},
+						{message:'<a class="red">item ->别迭代的数组元素别名</a>|对你的感觉 强烈'},
+						{message:'<a class="red">:key ->它能跟踪每个节点的身份，从而重用和重新排序现有元素</a>|却又不太了解 只凭直觉'}
+					],
+					objects:{
+						first:'<a class="red">渲染对象</a>|你像窝在被子里的舒服',
+						second:'<a class="red">(对象值，名称，索引) 圆括号可带可不带，建议带上</a>|却又像风捉摸不住',
+						third:'<a class="red">在 v-for 块中，我们可以访问所有父作用域的属性;就是可以在for循环中随意调用data里面其他属性</a>|像手腕上散发的香水味'
+					}
+				},computed:{
+					evennumbers:function(){
+						return this.numbers.filter(function(number){
+							return number % 2 === 0;
+						})	
+					}
+				},methods:{
+					even:function(numbers){
+						return numbers.filter(function(number){
+							return number % 2 === 0;
+						})
+					}
+				}
+			})
+		</script>
+		<style>
+			.red{color: red;}
+		</style>
+	</body>
+</html>

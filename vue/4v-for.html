@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>条件与循环-v-for渲染列表</title>
+	</head>
+	<body>
+		<script src="js/vue.js"></script>
+		<div id="app-4">
+			<ol>
+				<li v-for="todo in lists">
+					{{ todo.text }}
+				</li>
+			</ol>
+		</div>
+		
+		<script type="text/jscript">
+			var app4 = new Vue({
+				el:'#app-4',
+				data:{
+					lists:[
+						{text:'2019-11-13开始学习vue'},
+						{text:'学习vue,v-for 循环'},
+						{text:'学习v-for'}
+					]
+				}
+			})
+		</script>
+		<!--
+		 在控制台里，输入 app4.lists.push({ text: '新项目' })，你会发现列表最后添加了一个新项目。
+		 -->
+	</body>
+</html>

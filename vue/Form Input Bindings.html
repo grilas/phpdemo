@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单输入绑定</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p><input type="checkbox" value="xj" v-model="shuiguo" />
+			<label>香蕉</label>
+			
+			<input type="checkbox" value="pg" v-model="shuiguo" />
+			<label>苹果</label>
+			
+			<input type="checkbox" value="cm" v-model="shuiguo" />
+			<label>草莓</label></p>
+			
+			<p>
+				<input type="radio" value="One" v-model="picked"/>
+				<label for="one">One</label>
+				
+				<input type="radio" value="Two" v-model="picked" />
+				<label for="two">Two</label>
+			</p>
+			
+			<p>
+				<select v-model="selected">
+					<option disabled value="">选择</option>
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+				</select>
+			</p>
+			
+			<p>
+			  <select v-model="duoxuan" multiple style="width: 50px;">
+				<option>多选</option>
+				<option>B</option>
+				<option>C</option>
+			  </select>
+			</p>
+			<p>
+				<label>正常：</label>
+				<input v-model="nomarl" placeholder="正常"/>
+				<br>
+				<label>修饰符lazy：</label>
+				<input v-model.lazy="layz" placeholder="修饰符lazy"/>
+				<br>
+				<label>过滤修饰符：</label>
+				<input v-model.trim="guolv" placeholder="过滤">
+			</p>
+			
+			<p>
+				正常:{{nomarl}} <br> 
+				修饰符layz:{{ layz }} <br>  
+				修饰符trim:{{guolv}} <br>
+				水果:{{ shuiguo }} <br>
+			</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					shuiguo:[],
+					picked:'',
+					selected:'',
+					duoxuan:[],
+					nomarl:'',
+					layz:'',
+					guolv:''
+				}
+			})
+		</script>
+	</body>
+</html>

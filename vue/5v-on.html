@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>处理用户输入v-on事件监听</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app-5">
+			<p>{{ message }}</p>
+			<button v-on:click="reverseMessage">反转消息</button>
+			<p><strong>v-on缩写</strong>  v-on:click="func" ====> @click="func"</p>
+			<p>methods的另一种用法{{ tanchu() }}</p>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var app5 = new Vue({
+				el:"#app-5",
+				data:{ message:'12345'},
+				methods:{
+					reverseMessage:function(){
+						this.message=this.message.split('').reverse().join('');
+					},
+					tanchu:function(){
+						return "11111111111";
+					}
+				}
+			})
+		</script>
+		<!-- 
+		 注意在 reverseMessage 方法中，我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，你编写的代码只需要关注逻辑层面即可。
+		 -->
+	</body>
+</html>

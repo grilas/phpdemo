@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>条件渲染；</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。 -->
+			<h1 v-if="xianshi">h1条件渲染v-if为真</h1>
+			<h1 v-else>h1;v-if 为假的</h1>
+
+			<h2 v-if="h2data ==='A'">h2;AAAAAAAAAAAAAAA</h2>
+			<h2 v-else-if="h2data ==='B'">h2;BBBBBBBBBBBBBBB</h2>
+			<h2 v-else-if="h2data ==='C'">h2;CCCCCCCCCCCCC</h2>
+			<h2 v-else>h2；什么都没有</h2>
+			
+			<!-- <template> 元素上使用 v-if 条件渲染分组 -->
+			<template v-if="ok">
+				  <h1>标题</h1>
+				  <p>段落1</p>
+				  <p>段落2</p>
+			</template>
+			
+			<!-- v-show 不支持 <template> 元素，也不支持 v-else。 -->
+			<p v-show="ok">v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。</p>
+			<p>
+				v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。
+				v-if 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
+				相比之下，v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。
+				一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好 
+			</p>
+			<!-- 
+			
+			 -->
+			
+			
+			<!--  Vue 为你提供了一种方式来表达“这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key
+			注意，<label> 元素仍然会被高效地复用，因为它们没有添加 key 属性。 -->
+			<template v-if="loginType === 'username'">
+			  <label>Username</label>
+			  <input placeholder="Enter your username" key="username-input">
+			</template>
+			<template v-else>
+			  <label>Email</label>
+			  <input placeholder="Enter your email address" key="email-input">
+			</template>
+			<p><button @click="qiehuan">toggle login type</button></p>
+			
+			
+			
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					xianshi:false,
+					h2data:'A',
+					ok:true,
+					loginType:'username'
+				},
+				methods:{
+					qiehuan:function(){
+						if(this.loginType=='username'){
+							this.loginType='email'
+						}else{
+							this.loginType='username'
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

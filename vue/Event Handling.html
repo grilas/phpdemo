@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件处理</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p><button v-on:click="count+=1">{{ count }}-->点击+1 </button></p>
+			<p><button v-on:click="setval">{{ count1 }}-->点击+1</button></p>
+			<p><button v-on:click="func('param')">{{ count2 }}-->点击+1</button></p>
+			<p><button v-on:click="warn('warn', $event)">submit</button></p>
+			
+			<p><button v-on:click.once="doThis">事件修饰符once</button></p>
+			<p><input v-on:keyup.enter="submit">按键修饰符</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					count:0,
+					count1:0,
+					count2:0,
+				},methods:{
+					setval:function(event){
+						console.log(event)
+						this.count1 += 1;
+					},
+					func:function(msg){
+						console.log(msg);
+						this.count2 += 1;
+					},
+					warn:function(msg, obj){
+						console.log(msg);
+					},
+					doThis:function(){
+						alert(1);
+					},
+					submit:function(){
+						alert('按键修饰符');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

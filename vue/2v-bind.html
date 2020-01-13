@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js"></script>
+		<title>声明式与渲染</title>
+	</head>
+	<body>
+		<div id="app-2">
+			<p><a v-bind:title="message" v-bind:href="url">
+				鼠标悬停几秒钟查看次数动态绑定提示信息
+			</a></p>
+			<p><strong>v-bind缩写</strong>  v-bind:href="http://xxx" ===> :href="http://xx"</p>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app-2',
+				data:{
+					message:'页面加载与'+new Date().toLocaleDateString(),
+					url:'http://www.baidu.com'
+				}
+			})
+		</script>
+		<!-- 
+		这里我们遇到了一点新东西。你看到的 v-bind 特性被称为指令。指令带有前缀 v-，以表示它们是 Vue 提供的特殊特性。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 title 特性和 Vue 实例的 message 属性保持一致”。
+		如果你再次打开浏览器的 JavaScript 控制台，输入 app2.message = '新消息'，就会再一次看到这个绑定了 title 特性的 HTML 已经进行了更新。 
+		 -->
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>s数据与方法</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 当一个 Vue 实例被创建时，它将 data 对象中的所有的属性加入到 Vue 的响应式系统中。当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。 -->
+		<div id="app">
+			{{a}}===<!-- {{b}} -->==={{c}}
+		</div>
+		<script type="text/javascript">
+			//声明一个数据对象
+			var data = {a:1,c:'cccc',d:{e:"e1"}, f:1,g:2};
+			//改对象被加入到一个Vue实例中
+			var vm = new Vue({
+				el:"#app",
+				data:data,
+				watch:{
+					a:function(newVal,oldVal){
+						console.log("a===new:"+newVal+" old:"+oldVal);
+					},
+				}
+			})
+			//获得这个实例上的属性
+			//返回元数据中对应的字段
+			vm.a = "更改a变量的值";
+			data.a = "第二次更改a标量的值";
+			//除了数据属性，Vue 实例还暴露了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来。例如：
+			//vm.$data === data // => true
+			//vm.$el === document.getElementById('example') // => true
+			vm.$data.a = "bbbb";
+		    console.log(vm.a+"===="+data.a);
+			//vm.a ==== data.a 的
+			
+			
+			//设置b变量的值,当没有定义或者声明的时候这样赋值是会出错或者不显示的
+			//vm.b = "vm设置b变量的值";
+			//data.b = "data设置b变量的值";
+			
+			//观察变量变化表达式,单个变量;顺序一定不要弄反了,观察表达式在前
+			var unwatch2 = vm.$watch('c',function(newVal,oldVal){
+				console.log("c===new:"+newVal+" old:"+oldVal);
+			})
+			
+			vm.$watch("d.e",function(newVal,oldVal){
+				console.log("d.e===new:"+newVal+" old:"+oldVal);
+			})
+			
+			vm.$watch(
+				function(){
+					return this.f+this.g;
+				},function(newVal, oldVal){
+					console.log("watch===new:"+newVal+" old:"+oldVal)
+				}
+			)
+			
+			vm.c = "vm设置c的变量cccc";
+			vm.a = "aaaaaaaaa";
+			vm.d.e="dddddd";
+			vm.f = 6;
+			vm.g = 4;
+			/* 取消观察 */
+			unwatch2();
+			//vm.e="";
+		</script>
+		<!-- 我们额 -->
+	</body>
+</html>
+<!-- 136 190 
+105 190
+-->

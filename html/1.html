@@ -3,6 +3,10 @@
 	<title>wefawef</title>
 	<meta charset="utf-8">
 </head>
+<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+	a{cursor: pointer;}
+</style>
 <body>
 <a href="" id="a1" target="new">新窗口</a>
 <div id="msg"></div>
@@ -10,8 +14,18 @@
     用户名：<input type="text" name="username"/><br>
     text:<input id="txt" type="text" value="baidu"/><br>
     <input type="button" id="btn" value="提交"/>
+    <P><a id="test1">点击显示测试数据js</a></P>
 </form>
 <script type="text/javascript">
+	$(function(){
+		$("#test1").click(function(){
+			var ss = [1,2,3,4,5];
+			var duixiang = new Object();
+			duixiang.name = "大肚子大黑脸"
+			alert("对象在我后面"+console.log(duixiang));
+		})
+	})
+
 	var txt = document.getElementById('txt');
 	txt.onmouseover = function(){
 		this.select();
